@@ -1,0 +1,14 @@
+# build outputs from 'make'
+# ignore the final executable in the project root
+/bbb_sensor_app
+*.o
+*.d
+
+# ide-specific settings
+# don't commit user-local vscode configs
+.vscode/
+
+# common temp files & logs
+*~
+*.swp
+*.log
