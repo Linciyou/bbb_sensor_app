@@ -1,0 +1,20 @@
+[Unit]
+Description=BBB Sensor to LCD Application (Debug Mode)
+# 我們暫時只保留最基礎的依賴
+After=multi-user.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/debian/bbb_sensor_app
+ExecStart=/home/debian/bbb_sensor_app/bbb_sensor_app
+User=root
+
+# 關鍵：在執行主程式前，強制等待 15 秒！
+# 這給了系統足夠的時間去準備好所有硬體，包括 I2C 和 Pinmux。
+ExecStartPre=/bin/sleep 15
+
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
